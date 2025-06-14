@@ -33,7 +33,7 @@ router.post("/", adminOnly, async (req: Request, res: Response) => {
     data: { name },
   });
 
-  res.status(201).send({
+  res.status(201).json({
     message: `Created player: ${created.name}, ${created.id}, ${created.score}`,
   });
   return;
@@ -72,7 +72,7 @@ router.put("/:id", adminOnly, async (req: Request, res: Response) => {
       where: { id },
       data: { name, score },
     });
-    res.send({ message: "Player updated.", player: updated });
+    res.json({ message: "Player updated.", player: updated });
     return;
   } catch (err: any) {
     console.error("PUT /players/:id error:", err);
