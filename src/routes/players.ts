@@ -1,7 +1,6 @@
 // src/routes/players.ts
 import { Request, Response, Router } from "express";
 import prisma from "../prisma";
-import { create } from "domain";
 
 const router = Router();
 
@@ -19,11 +18,11 @@ router.post("/", async (req: Request, res: Response) => {
     return;
   }
 
-  // 2) Check for existing player
-  const existing = await prisma.player.findUnique({
+  //Check for existing player
+  const existingName = await prisma.player.findUnique({
     where: { name },
   });
-  if (existing) {
+  if (existingName) {
     res
       .status(409)
       .send({ message: "A player with that name already exists." });
@@ -35,15 +34,13 @@ router.post("/", async (req: Request, res: Response) => {
     data: { name },
   });
 
-  res
-    .status(201)
-    .send({
-      message: `Created player: ${created.name}, ${created.id}, ${created.score}`,
-    });
+  res.status(201).send({
+    message: `Created player: ${created.name}, ${created.id}, ${created.score}`,
+  });
   return;
 });
 
-// PUT /players/:id
+///players/id
 router.put("/:id", async (req: Request, res: Response) => {
   const id = req.params.id;
   const { name, score } = req.body as {
@@ -51,32 +48,26 @@ router.put("/:id", async (req: Request, res: Response) => {
     score?: unknown;
   };
 
-  // 1) Validate inputs
+  //Validate inputs
   if (!name || typeof name !== "string") {
     res.status(400).send({ message: "Name is required and must be a string." });
     return;
   }
-  if (
-    score === undefined ||
-    typeof score !== "number" ||
-    !Number.isInteger(score)
-  ) {
-    res
-      .status(400)
-      .send({ message: "Score is required and must be an integer." });
+  if (score === undefined || score === null) {
+    res.status(400).send({ message: "Score is required." });
     return;
   }
 
-  // 2) Check unique-name conflict (can't rename to someone else's name)
-  const conflict = await prisma.player.findUnique({ where: { name } });
-  if (conflict && conflict.id !== id) {
+  //can't rename to someone else's name
+  const nameAlreadyExists = await prisma.player.findUnique({ where: { name } });
+  if (nameAlreadyExists && nameAlreadyExists.id !== id) {
     res
       .status(409)
       .send({ message: `Another player already uses the name "${name}".` });
     return;
   }
 
-  // 3) Perform the update
+  //update
   try {
     const updated = await prisma.player.update({
       where: { id },
@@ -85,23 +76,13 @@ router.put("/:id", async (req: Request, res: Response) => {
     res.send({ message: "Player updated.", player: updated });
     return;
   } catch (err: any) {
-    // Record not found
-    if (err.code === "P2025") {
-      res.status(404).send({ message: `No player found with ID "${id}".` });
-      return;
-    }
-    // Unique constraint slipped through
-    if (err.code === "P2002") {
-      res.status(409).send({ message: `Name "${name}" is already taken.` });
-      return;
-    }
     console.error("PUT /players/:id error:", err);
     res.status(500).send({ message: "Unexpected server error." });
     return;
   }
 });
 
-// DELETE /players/:id
+// DELETE /players/id
 router.delete("/:id", async (req, res) => {
   await prisma.player.delete({ where: { id: req.params.id } });
   res.sendStatus(204);
