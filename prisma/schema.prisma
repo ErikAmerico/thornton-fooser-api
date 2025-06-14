@@ -17,5 +17,6 @@ datasource db {
 model Player {
   id    String @id @default(cuid())
   name  String @unique
-  score Int    @default(0)
+  score Float  @default(0)
+  hint  String @default("")
 }
