@@ -1,17 +1,16 @@
-// src/routes/players.ts
 import { Request, Response, Router } from "express";
 import prisma from "../prisma";
+import { adminOnly } from "../middleware/adminOnly";
 
 const router = Router();
 
-// GET /players
 router.get("/", async (_req, res) => {
   const players = await prisma.player.findMany();
   res.json(players);
 });
 
-router.post("/", async (req: Request, res: Response) => {
-  // 1) Validate & pull out `name`
+router.post("/", adminOnly, async (req: Request, res: Response) => {
+  //grab name
   const { name } = req.body as { name?: string };
   if (!name || typeof name !== "string") {
     res.status(400).send({ message: "Name is required." });
@@ -41,7 +40,7 @@ router.post("/", async (req: Request, res: Response) => {
 });
 
 ///players/id
-router.put("/:id", async (req: Request, res: Response) => {
+router.put("/:id", adminOnly, async (req: Request, res: Response) => {
   const id = req.params.id;
   const { name, score } = req.body as {
     name?: unknown;
@@ -83,7 +82,7 @@ router.put("/:id", async (req: Request, res: Response) => {
 });
 
 // DELETE /players/id
-router.delete("/:id", async (req, res) => {
+router.delete("/:id", adminOnly, async (req, res) => {
   await prisma.player.delete({ where: { id: req.params.id } });
   res.sendStatus(204);
 });
