@@ -1,9 +1,9 @@
 import { Request, Response, NextFunction } from "express";
 import bcrypt from "bcrypt";
 
-const ADMIN_HASH = process.env.ADMIN_HASH!;
-if (!ADMIN_HASH) {
-  throw new Error("Missing ADMIN_HASH in env");
+const SECRET_CODE = process.env.SECRET_CODE!;
+if (!SECRET_CODE) {
+  throw new Error("Missing SECRET_CODE in env");
 }
 
 export async function adminOnly(
@@ -19,7 +19,7 @@ export async function adminOnly(
   }
 
   // compare to the bcrypt hash
-  const ok = await bcrypt.compare(code, ADMIN_HASH);
+  const ok = await bcrypt.compare(code, SECRET_CODE);
   if (!ok) {
     res.status(403).send({ error: "Invalid admin code" });
     return;
