@@ -8,7 +8,7 @@ dotenv.config();
 
 const app = express();
 
-// app.use(cors({ origin: "https://foosball.life" })); ////for prod
+// app.use(cors({ origin: "https://foosball.life" })); ////for prod?
 app.use(cors()); ////for dev
 app.use(express.json());
 app.use(helmet());
