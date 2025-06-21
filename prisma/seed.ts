@@ -21,7 +21,7 @@ async function main() {
     { name: "Monica P", score: 7.5 },
     { name: "C.J", score: 4 },
     { name: "Andy P", score: 5 },
-    { name: "Rachel P", score: 2 },
+    { name: "Rachel P", score: 2.5 },
     { name: "Casey R", score: 5 },
     { name: "Jake R", score: 5 },
     { name: "Andraya B", score: 15 },
