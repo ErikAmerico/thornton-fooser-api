@@ -12,19 +12,19 @@ async function main() {
     { name: "Ofir C", score: 24 },
     { name: "Anna O", score: 15 },
     { name: "Michelle C", score: 19.5 },
-    { name: "Dan F", score: 8 },
-    { name: "Rachelle J", score: 8.5 },
+    { name: "Dan F", score: 13.5 }, //good
+    { name: "Rachelle J", score: 12.75 }, //good
     { name: "Cooper R", score: 3.75 },
     { name: "Rachel R", score: 6 },
-    { name: "Tommy B", score: 6.5 },
+    { name: "Tommy B", score: 9.5 }, //good
     { name: "Monica P", score: 7.5 },
     { name: "C.J", score: 4 },
-    { name: "Andy P", score: 5 },
+    { name: "Andy P", score: 6 }, //good
     { name: "Rachel P", score: 2.5 },
-    { name: "Casey R", score: 5 },
-    { name: "Jake R", score: 5 },
-    { name: "Andraya B", score: 15 },
-    { name: "Brickwall", score: 14.5 },
+    { name: "Casey R", score: 8 }, //good
+    { name: "Jake R", score: 7 }, //good
+    { name: "Andraya B", score: 15 }, //good
+    { name: "Brickwall", score: 17.5 }, //good
     { name: "Matt D", score: 5 },
     { name: "Ari S", score: 4 },
     { name: "Steve M", score: 4 },
@@ -37,10 +37,13 @@ async function main() {
     { name: "Matt G", score: 5.5 },
     { name: "Zack C", score: 3.5 },
     { name: "Megan K", score: 3.5 },
-    { name: "Jason R", score: 2.5 },
+    { name: "Jason R", score: 3.5 }, //good
     { name: "Chris S", score: 2.5 },
     { name: "Bryan CJ", score: 4.5 },
   ];
+
+  //ofir = 18.25 still have to review jun 21 2024
+  //michelle = 19.75  still have to review jun 21 2024
 
   // createMany will insert them all in one go
   await prisma.player.createMany({
