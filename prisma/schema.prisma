@@ -19,3 +19,10 @@ model Player {
   name  String @unique
   score Float  @default(0)
 }
+
+model Tournament {
+  id         Int             @id @default(autoincrement())
+  createdAt  DateTime        @default(now())
+  teams      Json
+  results    Json            
+}
