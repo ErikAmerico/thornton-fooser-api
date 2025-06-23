@@ -76,7 +76,7 @@ router.post("/update", adminOnly, async (req: Request, res: Response) => {
 
 router.get("/history", async (_req, res) => {
   const history = await prisma.tournament.findMany({
-    orderBy: { createdAt: "desc" },
+    orderBy: { createdAt: "asc" },
     take: 20,
   });
   res.json(history);
