@@ -42,6 +42,23 @@ router.post("/update", adminOnly, async (req: Request, res: Response) => {
     return;
   }
 
+  const getChampions = (results: any) => {
+    const reversed = results.toReversed();
+
+    for (let i = 0; i < reversed.length; i++) {
+      if (reversed[i].winner !== null) {
+        const playerIdsToAddTitleToArray = [
+          reversed[i].winner[0].id,
+          reversed[i].winner[1].id,
+        ];
+
+        return playerIdsToAddTitleToArray;
+      }
+    }
+  };
+
+  const arrayOfChampIds = getChampions(matchResults);
+
   try {
     // Build one update-per-player, each incrementing their existing score
     const updates = Object.entries(finalScores).map(([playerId, delta]) =>
@@ -54,6 +71,19 @@ router.post("/update", adminOnly, async (req: Request, res: Response) => {
         },
       })
     );
+
+    //When match is submitted, Pull out the champs and increment their
+    //championships tally by 1.
+    for (let i = 0; i < arrayOfChampIds!.length; i++) {
+      await prisma.player.update({
+        where: { id: arrayOfChampIds![i] },
+        data: {
+          championships: {
+            increment: 1,
+          },
+        },
+      });
+    }
 
     // Run all updates in a single transaction
     await prisma.$transaction(updates);
