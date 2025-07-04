@@ -5,6 +5,7 @@ import helmet from "helmet";
 import playersRouter from "./routes/players";
 import matchesRouter from "./routes/matches";
 import chatRouter from "./routes/chat";
+import tournamentSummaryRouter from "./routes/tournamentSummary";
 dotenv.config();
 
 const app = express();
@@ -25,6 +26,7 @@ const port = process.env.PORT || 3000; // prod?
 app.use("/players", playersRouter);
 app.use("/matches", matchesRouter);
 app.use("/chat", chatRouter);
+app.use("/summary", tournamentSummaryRouter);
 
 app.listen(port, () => {
   console.log(`🚀 Server running at http://localhost:${port}`); //prod?
