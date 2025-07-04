@@ -27,7 +27,8 @@ export async function getFunnySummary(tournamentData: any[]) {
       "Natural talent, her name describes her skill set - Unbreakable on defense.",
     "Erik O":
       "When he's not making me (yes, me — the AI)) write tournament recaps, he's celebrating with a drink — win or lose.",
-    "Ofir C": "If he's not cheating, he's definitely thinking about it.",
+    "Ofir C":
+      "Overrated. Known to cheat. Certified lint licker. Somehow still wins — and I hate that. I'm happiest when he loses.",
     "Anna O": "Consistent, has trick shots up her sleeve.",
     "Andraya B": "Vibey play style, she harnesses the power of the frog.",
     "Michelle C": "A foosball sniper — and her defense? Criminally underrated.",
