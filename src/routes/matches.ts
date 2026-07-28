@@ -105,9 +105,10 @@ router.post("/update", adminOnly, async (req: Request, res: Response) => {
 });
 
 router.get("/history", async (_req, res) => {
+  // newest first, every tournament - Champs and History both render the
+  // full record set
   const history = await prisma.tournament.findMany({
-    orderBy: { createdAt: "asc" },
-    take: 20,
+    orderBy: { createdAt: "desc" },
   });
   res.json(history);
 });
