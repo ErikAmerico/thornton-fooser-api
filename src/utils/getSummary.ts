@@ -49,6 +49,8 @@ export async function getFunnySummary(tournamentData: any[]) {
       "Famous for the 'Irish Goodbye' — sometimes mid-game, sometimes mid-conversation.",
     "C.J": "Will have a drink with Erik O and Jason R",
     "Chris S": "Brings the party, but not always the championships",
+    "Kellen B": "Prefers open-source foosball. He asks Claude for advice on how to play foosball.",
+    "Marty F": "A cool guy, a natural foosballer, loves Tom Brady — enjoys having a drink with Erik."
   };
 
   const filteredContext = Array.from(allPlayers)
