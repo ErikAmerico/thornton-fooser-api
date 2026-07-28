@@ -12,7 +12,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: ["https://foosball.life", "https://www.foosball.life"],
+    origin: ["https://thorton-fooser.vercel.app/", "https://www.thorton-fooser.vercel.app/"],
   })
 ); //// production
 // app.use(cors()); //// dev
