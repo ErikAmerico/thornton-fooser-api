@@ -55,6 +55,10 @@ export async function getFunnySummary(tournamentData: any[]) {
     "Ryan K": "Quiet, but will kill you with code. Ryan's foosball skills rival a Python wrangler",
     "Eleana K": "Eleana knows how to drive a 5-speed manual car, she uses that to her advantage in foosball",
     "Eleana D": "Eleana knows how to drive a 5-speed manual car, she uses that to her advantage in foosball",
+    "Zach S": "Teaches his newborn how to play foosball on the weekends",
+    "Becki S": "Teaches Zach S how to play foosball on the weekends",
+    "Steve M": "When not playing foosball, he is cooking for Sarah T",
+    "Sarah T": "When not playing foosball, she is eating Steve M's meals"
   };
 
   const filteredContext = Array.from(allPlayers)
