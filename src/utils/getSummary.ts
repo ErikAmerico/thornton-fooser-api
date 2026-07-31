@@ -41,7 +41,7 @@ export async function getFunnySummary(tournamentData: any[]) {
     "Cooper R":
       "Can install your deck and wreck your defense — all in a day's work.",
     "Rachelle J":
-      "If Erik and Jason are drinking, Rachelle's probably already there.",
+      "If Erik and Jason are drinking, Rachelle's probably already there. Rachelle J and Dan F just got married",
     "Matt D":
       "Foosball's frontman. 'It's a perfect day to be outside' — unless you're losing to him indoors.",
     "Ari S": "Quiet. Calm. Deadly. Like a foosball ninja.",
@@ -50,7 +50,11 @@ export async function getFunnySummary(tournamentData: any[]) {
     "C.J": "Will have a drink with Erik O and Jason R",
     "Chris S": "Brings the party, but not always the championships",
     "Kellen B": "Prefers open-source foosball. He asks Claude for advice on how to play foosball.",
-    "Marty F": "A cool guy, a natural foosballer, loves Tom Brady — enjoys having a drink with Erik."
+    "Marty F": "A cool guy, a natural foosballer, loves Tom Brady — enjoys having a drink with Erik.",
+    "Dan F": "This guy does not allow 1 spec of dust to touch his foosballs. He is the tidiest person alive. Rachelle J and Dan F just got married",
+    "Ryan K": "Quiet, but will kill you with code. Ryan's foosball skills rival a Python wrangler",
+    "Eleana K": "Eleana knows how to drive a 5-speed manual car, she uses that to her advantage in foosball",
+    "Eleana D": "Eleana knows how to drive a 5-speed manual car, she uses that to her advantage in foosball",
   };
 
   const filteredContext = Array.from(allPlayers)
